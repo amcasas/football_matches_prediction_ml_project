@@ -8,8 +8,8 @@ app = FastAPI(title="F1-score Football Predictor")
 
 # Load the model and the latest team statistics dictionary
 # (Created during your 'Production Training' notebook)
-model = joblib.load("football_model.pkl")
-team_stats = joblib.load("team_stats.pkl") 
+model = joblib.load("./notebooks/football_model.pkl")
+team_stats = joblib.load("./notebooks/team_stats.pkl") 
 
 class MatchRequest(BaseModel):
     home_team: str
