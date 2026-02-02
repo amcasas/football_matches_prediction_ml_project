@@ -43,3 +43,8 @@ def predict_match(match: MatchRequest):
         },
         "favorite": match.home_team if probs[2] > probs[0] else match.away_team
     }
+
+@app.get("/teams")
+def get_teams():
+    # Returns a sorted list of all team names from your stats dictionary
+    return sorted(list(team_stats.keys()))
