@@ -12,4 +12,4 @@ A probabilistic forecasting engine built with **XGBoost** and deployed using a m
 The model uses historical data (1872–2025) to calculate team strength gaps, "Jerarquía" (heritage), and recent scoring trends. It outputs the probability of a Home Win, Draw, or Away Win.
 
 ### 🔗 Live API
-The backend is running on Google Cloud Run: `[PASTE-YOUR-GCP-URL-HERE]`
+The backend is running on Google Cloud Run.
