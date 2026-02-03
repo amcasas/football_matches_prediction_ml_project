@@ -442,8 +442,9 @@
                 homeSelect.appendChild(opt1);
                 awaySelect.appendChild(opt2);
             });
-            homeSelect.value = teams[0];
-            awaySelect.value = teams[1];
+            // Set defaults to Colombia vs Argentina
+            homeSelect.value = "Colombia";
+            awaySelect.value = "Argentina";
         } catch (e) { 
             console.error("API Connection Failed", e); 
         }

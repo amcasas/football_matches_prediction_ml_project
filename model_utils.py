@@ -14,10 +14,9 @@ def preprocess_match(match_request, team_stats):
     h_stats = team_stats[home]
     a_stats = team_stats[away]
     
-    # 2. Reconstruct the base features
-    # Note: These names must match exactly what you used in X_train
+    # 2. Reconstruct the base model features
     data = {
-        'is_neutral': int(match_request.is_neutral),
+        'is_neutral': int(match_request.is_neutral), # bool to int
         'is_true_home': int(not match_request.is_neutral), # Simple assumption for API
         'is_competitive': 1, # Default to 1 for meaningful predictions
         'home_jerarquia_score': h_stats['home_jerarquia_score'],
@@ -31,7 +30,7 @@ def preprocess_match(match_request, team_stats):
     data['heritage_gap'] = data['home_jerarquia_score'] - data['away_jerarquia_score']
     
     # 4. Convert to DataFrame in the correct column order
-    # The order must be IDENTICAL to the features list in your training notebook
+    # The order is IDENTICAL to the features list in the training notebook
     feature_order = [
         'is_neutral', 'is_true_home', 'is_competitive',
         'home_jerarquia_score', 'away_jerarquia_score',

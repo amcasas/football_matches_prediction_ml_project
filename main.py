@@ -6,9 +6,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from model_utils import preprocess_match
 
-app = FastAPI(title="F1-score Football Predictor")
+app = FastAPI(title="Football Predictor")
 
-# --- CORS CONFIGURATION (Fixes "Loading teams..." issue) ---
+# --- CORS CONFIGURATION
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  # Allows GitHub Pages to communicate with this API
@@ -18,7 +18,7 @@ app.add_middleware(
 )
 
 # Load the model and the latest team statistics dictionary
-# Ensure these files are in the same directory as main.py
+# These files must be in the same directory as main.py
 model = joblib.load("./football_model.pkl")
 team_stats = joblib.load("./team_stats.pkl") 
 
@@ -46,7 +46,7 @@ def predict_match(match: MatchRequest):
     features_df = preprocess_match(match, team_stats)
 
     # 3. Probabilistic Prediction
-    # Note: Ensure your model.classes_ order is [0, 1, 2] -> [Away, Draw, Home]
+    # Note: Ensure model.classes_ order is [0, 1, 2] -> [Away, Draw, Home]
     probs = model.predict_proba(features_df)[0]
 
     return {
